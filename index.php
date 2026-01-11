@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         :root {
             --font-size: 26px;
         }
@@ -16,8 +17,10 @@
             user-select: none;
         }
         html {
-
             font-size: var(--font-size);
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
         }
         .cont {
             position: absolute;
@@ -27,6 +30,7 @@
             width: fit-content;
         }
         h2 {
+            font-weight: 400;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -54,6 +58,7 @@
             outline: none;
             border: none;
             border-bottom: 1px solid #000;
+            transition: 0.2s;
 
             &:focus {
                 border-color: #44cad4;
@@ -63,7 +68,7 @@
                 color: #44cad4;
                 background: #fff;
                 padding-inline: 2px;
-                bottom: -0.49rem;
+                bottom: -0.45rem;
                 font-size: calc(var(--font-size) / 2);
             }
         }
@@ -74,6 +79,7 @@
             bottom: 0;
             z-index: 1;
             transition: 0.2s;
+            font-size: calc(var(--font-size) / 1.4);
 
             &:hover {
                 cursor: text;
