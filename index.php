@@ -12,6 +12,7 @@
             --font-size: 26px;
             --background: rgb(32, 32, 32);
             --color: rgb(255, 255, 255);
+            --color_a: rgba(255, 255, 255, 0.7);
             --color_2: rgb(30, 162, 195);
             --color_3: rgba(0, 255, 123, 0.4);
             --shadow: rgba(30, 162, 195, 0.5);
@@ -28,13 +29,14 @@
             font-style: normal;
             background: var(--background);
             color: var(--color);
+            white-space: nowrap;
         }
         .cont {
             position: absolute;
+            width: min(30rem, 100%);
             top: 50%;
             left: 50%;
             translate: -50% -50%;
-            width: fit-content;
         }
         h2 {
             font-weight: 600;
@@ -63,18 +65,20 @@
         }
         .cat_input_cont {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
         }
         .input_cont {
-            display: flex;
             position: relative;
-            height: 1rem;
+            display: flex;
+            height: max-content;
+            width: 8rem;
         }
         input {
             color: var(--color);
             background: none;
             width: 100%;
-            height: 100%;
+            height: 1rem;
             padding: 4px;
             outline: none;
             border: none;
@@ -102,15 +106,15 @@
                 color: var(--color_3);
                 background: var(--background);
                 padding-inline: 2px;
-                bottom: -60%;
+                bottom: -50%;
                 font-size: calc(var(--font-size) / 2);
             }
         }
         label {
-            color: var(--color);
+            color: var(--color_a);
             position: absolute;
             left: 0.4rem;
-            bottom: -4px;
+            bottom: 25%;
             z-index: 1;
             transition: 0.2s;
             font-size: calc(var(--font-size) / 1.4);
@@ -133,6 +137,21 @@
                 color: var(--color_2);
                 border-color: var(--color_2);
                 transition: 0.1s;
+            }
+        }
+
+        @media (max-width: 859px) {
+            .cont {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .cat_input_cont {
+                display: flex;
+                flex-direction: column;
+            }
+            .input_cont {
+                width: 10rem;
             }
         }
     </style>
