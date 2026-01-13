@@ -94,7 +94,7 @@
                 color: var(--color_2);
                 background: var(--background);
                 padding-inline: 2px;
-                bottom: -60%;
+                bottom: -20%;
                 font-size: calc(var(--font-size) / 2);
             }
 
@@ -106,7 +106,7 @@
                 color: var(--color_3);
                 background: var(--background);
                 padding-inline: 2px;
-                bottom: -50%;
+                bottom: -20%;
                 font-size: calc(var(--font-size) / 2);
             }
         }
