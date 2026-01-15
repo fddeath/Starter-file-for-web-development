@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     function createFile(string $name, string $content) {
-        $file = fopen($name, 'w');
         if (!file_exists($name)) {
             $file = fopen($name, 'w');
             fwrite($file, $content);
