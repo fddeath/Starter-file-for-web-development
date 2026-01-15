@@ -1,3 +1,73 @@
+<?
+
+ini_set('display_errors', 'off');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    $site_name = $_POST['site_name'];
+
+    #   functions
+
+    function createDir(string $dir, int $permissions = 0777) {
+        if (!is_dir($dir)) {
+            mkdir(
+                $dir,
+                $permissions,
+                true
+            );
+        }
+    }
+
+    function createFile(string $name, string $content = null) {
+        if (!file_exists($name)) {
+            $file = fopen($name, 'w');
+            if ($content) fwrite($file, $content);
+            else {
+                fclose($file);
+                return false;
+            }
+            fclose($file);
+        }
+    }
+
+    #   Modules
+
+    createDir('modules');
+    createFile(
+        'modules\Settings.php',
+        "<?\n\nnamespace Settings;\n\nconst SITE_NAME = '{$site_name}';"
+    );
+
+    #   CSS
+
+    createDir('css');
+    createFile(
+        'css\main.css',
+        ":root {\n\t--color: rgba(20, 20, 20, 0.8)\n};\n\n* {\n\tpadding: 0;\n\tmargin: 0;\n\tcolor: var(--color);\n};"
+    );
+
+    #   JS
+
+    createDir('js');
+
+    #   SRC
+
+    createDir('src');
+
+    #   Index
+
+    createFile(
+        'index.php',
+        "<?\n\n"
+    );
+
+    #   Redirect
+
+    header('Location: index.php');
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +229,7 @@
 <body>
     <div class="cont">
         <h2>Cloud space</h2>
-        <form action="/index.php" method="POST">
+        <form action="index.php" method="POST">
             <div class="cat_cont">
                 <h3>Site settings</h3>
                 <div class="cat_input_cont">
