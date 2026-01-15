@@ -18,14 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    function createFile(string $name, string $content = null) {
+    function createFile(string $name, string $content) {
+        $file = fopen($name, 'w');
         if (!file_exists($name)) {
             $file = fopen($name, 'w');
-            if ($content) fwrite($file, $content);
-            else {
-                fclose($file);
-                return false;
-            }
+            fwrite($file, $content);
+            fclose($file);
+        } else if ($name == 'index.php') {
+            $file = fopen($name, 'w');
+            fwrite($file, $content);
             fclose($file);
         }
     }
